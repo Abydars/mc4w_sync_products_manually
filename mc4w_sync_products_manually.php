@@ -26,7 +26,7 @@ function render_mailchimp_sync_manually($post) {
 add_action('wp_ajax_mailchimp_sync_manually', 'ajax_action_mailchimp_sync_manually');
 
 function ajax_action_mailchimp_sync_manually() {
-	if(isset($_GET['resync'])) {
+	if(isset($_GET['resync']) && class_exists('MailChimp_WooCommerce_Single_Product')) {
 		$id = $_GET['resync'];
 		$msp = new MailChimp_WooCommerce_Single_Product($id, "");
 		$msp->process();
